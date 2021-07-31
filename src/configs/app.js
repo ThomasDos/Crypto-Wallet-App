@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const enforce = require("express-sslify");
+const path = require("path");
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 app.use(express.json());
