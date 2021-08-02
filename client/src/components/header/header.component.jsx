@@ -14,8 +14,8 @@ const Header = () => {
         <Logo className="logo" />
       </LogoContainer>
       <OptionsContainer>
-        <OptionLink to="/login">Login</OptionLink>
-        <OptionLink to="/contact">CONTACT</OptionLink>
+        <OptionLink to="/add">Ajout</OptionLink>
+        <OptionLink to="/remove">Editer</OptionLink>
       </OptionsContainer>
     </HeaderContainer>
   );

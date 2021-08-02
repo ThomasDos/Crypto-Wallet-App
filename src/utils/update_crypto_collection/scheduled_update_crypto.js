@@ -1,5 +1,5 @@
 const cron = require("node-cron");
-const fetchCryptoAndUpdate = require("./fetch_crypto_and_update");
+const fetchCryptoAndUpdate = require("./update_crypto");
 
 module.exports = () =>
   cron.schedule("0 0 0 * * *", () => {

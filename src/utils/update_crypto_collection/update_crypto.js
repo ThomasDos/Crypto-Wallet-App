@@ -1,6 +1,6 @@
-const Crypto = require("../models/crypto.model");
-const fetchCMC = require("../services/coinmarketcap");
-const newDate = require("./new_date");
+const Crypto = require("../../models/crypto.model");
+const fetchCMC = require("../../services/coinmarketcap");
+const newDate = require("../new_date");
 
 module.exports = () => {
   fetchCMC

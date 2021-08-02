@@ -24,4 +24,12 @@ require("./router")(app);
 //DB
 require("../database/mongodb");
 
+//Fetch API CMC and update DB
+require("../utils/update_crypto_collection/update_crypto")(); //* Check if it has updated today
+require("../utils/update_crypto_collection/scheduled_update_crypto")(); //* Program the schedule > everyday at midnight
+
+//Daily update Wallet Value DB
+require("../utils/update_dailyreport_collection/scheduled_update_dailyreport")(); //* Check if it has updated today
+require("../utils/update_dailyreport_collection/update_daily_report")(); //* Program the schedule > everyday at midnight
+
 module.exports = app;
