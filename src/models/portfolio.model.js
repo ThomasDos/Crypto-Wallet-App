@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const dailyReportSchema = new mongoose.Schema(
+const portfolioSchema = new mongoose.Schema(
   {
     ETH: {
       value: {
@@ -42,6 +42,6 @@ const dailyReportSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const DailyReport = mongoose.model("DailyReport", dailyReportSchema);
+const Portfolio = mongoose.model("portfolio", portfolioSchema);
 
-module.exports = DailyReport;
+module.exports = Portfolio;

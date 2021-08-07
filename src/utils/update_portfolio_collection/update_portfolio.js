@@ -1,14 +1,14 @@
-const DailyReport = require("../../models/daily.model");
+const Portfolio = require("../../models/portfolio.model");
 const Wallet = require("../../models/wallet.model");
 const findQuantity = require("../find_quantity");
-const lastDayCrypto = require("../last_day_crypto");
+const lastDayCrypto = require("../last_day_data");
 const newDate = require("../new_date");
 
 module.exports = async () => {
   try {
     const wallet = await Wallet.find();
     const dateString = newDate();
-    const dailyWallet = {
+    const dailyPortfolio = {
       ETH: { quantity: findQuantity(wallet, "ETH") },
       BTC: { quantity: findQuantity(wallet, "BTC") },
       XRP: { quantity: findQuantity(wallet, "XRP") },
@@ -18,11 +18,11 @@ module.exports = async () => {
 
     const { BTC, ETH, XRP } = await lastDayCrypto();
 
-    dailyWallet.ETH.value = ETH * dailyWallet.ETH.quantity;
-    dailyWallet.BTC.value = BTC * dailyWallet.BTC.quantity;
-    dailyWallet.XRP.value = XRP * dailyWallet.XRP.quantity;
+    dailyPortfolio.ETH.value = ETH * dailyPortfolio.ETH.quantity;
+    dailyPortfolio.BTC.value = BTC * dailyPortfolio.BTC.quantity;
+    dailyPortfolio.XRP.value = XRP * dailyPortfolio.XRP.quantity;
 
-    await new DailyReport(dailyWallet).save();
+    await new Portfolio(dailyPortfolio).save();
   } catch (error) {
     console.log("Database is already up to date with Wallet value");
   }

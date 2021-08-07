@@ -1,8 +1,14 @@
 import React from "react";
-import Header from "./../../components/header/header.component";
-
+import { HomeContainer } from "./home.styles";
+import ChartCrypto from "../../components/chart_crypto/chart-weekly.component";
+import ChartPortfolio from "../../components/chart_portfolio/chart-portfolio.component";
 const HomePage = () => {
-  return <div>TEST HOME PAGE</div>;
+  return (
+    <HomeContainer>
+      <ChartCrypto />
+      <ChartPortfolio />
+    </HomeContainer>
+  );
 };
 
 export default HomePage;

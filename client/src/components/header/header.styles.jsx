@@ -48,3 +48,15 @@ export const OptionLink = styled(Link)`
   text-decoration: none;
   margin: 0 1.5rem;
 `;
+
+export const DailyDataContainer = styled.div`
+  display: flex;
+  padding-top: 1rem;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const AllDataContainer = styled.div``;
+export const SingleDataContainer = styled.div``;
+
+export const DateContainer = styled.div``;

@@ -10,13 +10,13 @@ import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <PersistGate persistor={persistor}>
-          <App />
-        </PersistGate>
-      </BrowserRouter>
-    </Provider>
+    {/* <Provider store={store}> */}
+    <BrowserRouter>
+      {/* <PersistGate persistor={persistor}> */}
+      <App />
+      {/* </PersistGate> */}
+    </BrowserRouter>
+    {/* </Provider> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

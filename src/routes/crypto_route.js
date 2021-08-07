@@ -1,8 +1,8 @@
 const app = require("express")();
 const Crypto = require("../models/crypto.model");
 
-const lastWeekCrypto = require("../utils/last_week_crypto");
-const lastDayCrypto = require("../utils/last_day_crypto");
+const lastWeekCrypto = require("../utils/last_week_data");
+const lastDayCrypto = require("../utils/last_day_data");
 
 app.route("/crypto").get(async (req, res) => {
   try {
@@ -15,7 +15,7 @@ app.route("/crypto").get(async (req, res) => {
 
 app.route("/crypto/week").get(async (req, res) => {
   try {
-    const cryptoWeek = await lastWeekCrypto();
+    const cryptoWeek = await lastWeekCrypto("crypto");
     res.send(cryptoWeek);
   } catch (error) {
     res.status(500).send(error.message);
@@ -24,7 +24,7 @@ app.route("/crypto/week").get(async (req, res) => {
 
 app.route("/crypto/day").get(async (req, res) => {
   try {
-    const cryptoDay = await lastDayCrypto();
+    const cryptoDay = await lastDayCrypto("crypto");
     res.send(cryptoDay);
   } catch (error) {
     res.status(500).send(error.message);
