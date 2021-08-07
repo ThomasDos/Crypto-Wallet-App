@@ -18,17 +18,14 @@ const AddPage = () => {
 
   const handleChange = (e) => {
     setData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
-
-    console.log(data);
   };
   const handleClick = async () => {
     if (data.coin === "" || data.quantity <= 0 || data.price <= 0)
       return alert("Merci de remplir tous les champs");
-    const result = await axios("/wallet", {
+    await axios("/wallet", {
       method: "POST",
       data,
     });
-    console.log(result.status);
 
     setData({ coin: "", quantity: 0, price: 0 });
   };

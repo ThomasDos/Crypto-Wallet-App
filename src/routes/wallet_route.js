@@ -1,12 +1,17 @@
 const app = require("express")();
 const Wallet = require("../models/wallet.model");
 const newDate = require("../utils/new_date");
+const lastOpsWallet = require("../utils/last_ops_wallet");
+
+app.route("/wallet/last").get(async (req, res) => {
+  const wallet = await lastOpsWallet();
+  res.send(wallet);
+});
 
 app
   .route("/wallet")
   .get(async (req, res) => {
     const wallet = await Wallet.find();
-    console.log(wallet);
     res.send(wallet);
   })
   .post(async (req, res) => {

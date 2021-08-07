@@ -9,7 +9,6 @@ const ChartPortfolio = () => {
   useEffect(() => {
     axios("/portfolio/week")
       .then((result) => {
-        console.log("JE RECOIS", result.data);
         setDataPortfolio(result.data);
       })
       .catch((err) => console.log(err.message));

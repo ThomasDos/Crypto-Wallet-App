@@ -29,6 +29,7 @@ const Header = (props) => {
       </DailyDataContainer>
 
       <OptionsContainer>
+        <OptionLink to="/graph">Graph</OptionLink>
         <OptionLink to="/add">Ajout</OptionLink>
         <OptionLink to="/remove">Editer</OptionLink>
       </OptionsContainer>

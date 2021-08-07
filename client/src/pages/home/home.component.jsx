@@ -1,13 +1,32 @@
-import React from "react";
-import { HomeContainer } from "./home.styles";
-import ChartCrypto from "../../components/chart_crypto/chart-weekly.component";
-import ChartPortfolio from "../../components/chart_portfolio/chart-portfolio.component";
-const HomePage = () => {
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import OpsLastList from "../../components/ops-last-list/ops-last-list.component";
+import PlusValue from "../../components/plusvalue/plusvalue.component";
+import { HomePageContainer } from "./home.styles";
+
+const HomePage = (props) => {
+  const [walletLast, setWalletLast] = useState([]);
+  const [walletAll, setWalletAll] = useState([]);
+  useEffect(() => {
+    axios("/wallet/last")
+      .then((result) => {
+        setWalletLast(result.data);
+      })
+      .catch((err) => console.log(err));
+
+    axios("/wallet")
+      .then((result) => setWalletAll(result.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <HomeContainer>
-      <ChartCrypto />
-      <ChartPortfolio />
-    </HomeContainer>
+    <HomePageContainer>
+      <PlusValue wallet={walletAll} data={props} />
+
+      {walletLast.map((result, index) => {
+        return <OpsLastList key={index} {...result} data={props} />;
+      })}
+    </HomePageContainer>
   );
 };
 

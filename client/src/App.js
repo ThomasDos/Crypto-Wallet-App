@@ -1,11 +1,12 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/home/home.component";
+import GraphPreview from "./pages/graph-preview/grap-preview.component";
 import AddPage from "./pages/add/add.component";
 import RemovePage from "./pages/remove/remove.component";
 import Header from "./components/header/header.component";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import HomePage from "./pages/home/home.component";
 
 function App() {
   const [dailyData, setDailyData] = useState();
@@ -24,7 +25,8 @@ function App() {
     <div className="App">
       <Header {...dailyData} />
       <Switch>
-        <Route component={HomePage} exact path="/" />
+        <Route render={() => <HomePage {...dailyData} />} exact path="/" />
+        <Route component={GraphPreview} exact path="/graph" />
         <Route component={AddPage} exact path="/add" />
         <Route component={RemovePage} exact path="/remove" />
       </Switch>

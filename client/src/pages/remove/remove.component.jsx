@@ -19,17 +19,14 @@ const RemovePage = () => {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-
-    console.log(data);
   };
   const handleClick = async () => {
     if (data.coin === "" || data.quantity <= 0)
       return alert("Merci de remplir tous les champs");
-    const result = await axios("/wallet", {
+    await axios("/wallet", {
       method: "POST",
       data: { ...data, quantity: (data.quantity *= -1) },
     });
-    console.log(result);
 
     setData({ coin: "", quantity: 0, price: 0 });
   };
