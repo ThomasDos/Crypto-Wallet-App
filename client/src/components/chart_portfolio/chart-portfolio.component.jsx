@@ -16,19 +16,19 @@ const ChartPortfolio = () => {
 
   const myLabels = [];
   const prices = [];
-
-  for (let i in dataPortfolio) {
-    myLabels[i] = dataPortfolio[i].dateString
-      .slice(2)
-      .split("-")
-      .reverse()
-      .join("-");
-    prices[i] =
-      dataPortfolio[i].BTC.value +
-      dataPortfolio[i].ETH.value +
-      dataPortfolio[i].XRP.value;
+  if (dataPortfolio) {
+    for (let i in dataPortfolio) {
+      myLabels[i] = dataPortfolio[i].dateString
+        .slice(2)
+        .split("-")
+        .reverse()
+        .join("-");
+      prices[i] =
+        dataPortfolio[i].BTC.value +
+        dataPortfolio[i].ETH.value +
+        dataPortfolio[i].XRP.value;
+    }
   }
-  console.log("MY prices", prices);
 
   const ref = useRef();
   const labels = myLabels;
@@ -46,7 +46,7 @@ const ChartPortfolio = () => {
 
   return (
     <ChartPortfolioContainer>
-      <Line ref={ref} data={data} />
+      {dataPortfolio ? <Line ref={ref} data={data} /> : "Please wait..."}
     </ChartPortfolioContainer>
   );
 };

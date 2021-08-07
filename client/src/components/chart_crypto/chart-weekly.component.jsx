@@ -16,15 +16,17 @@ const ChartWeekly = () => {
   const ethPrices = [];
   const xrpPrices = [];
 
-  for (let i in dataCrypto) {
-    myLabels[i] = dataCrypto[i].dateString
-      .slice(2)
-      .split("-")
-      .reverse()
-      .join("-");
-    btcPrices[i] = dataCrypto[i].BTC;
-    ethPrices[i] = dataCrypto[i].ETH;
-    xrpPrices[i] = dataCrypto[i].XRP;
+  if (dataCrypto) {
+    for (let i in dataCrypto) {
+      myLabels[i] = dataCrypto[i].dateString
+        .slice(2)
+        .split("-")
+        .reverse()
+        .join("-");
+      btcPrices[i] = dataCrypto[i].BTC;
+      ethPrices[i] = dataCrypto[i].ETH;
+      xrpPrices[i] = dataCrypto[i].XRP;
+    }
   }
 
   const ref = useRef();
@@ -65,9 +67,9 @@ const ChartWeekly = () => {
 
   return (
     <ChartWeeklyContainer>
-      <Line ref={ref} data={btcData} />
-      <Line ref={ref} data={ethData} />
-      <Line ref={ref} data={xrpData} />
+      {dataCrypto ? <Line ref={ref} data={btcData} /> : "please wait..."}
+      {dataCrypto ? <Line ref={ref} data={ethData} /> : ""}
+      {dataCrypto ? <Line ref={ref} data={xrpData} /> : ""}
     </ChartWeeklyContainer>
   );
 };
