@@ -6,7 +6,6 @@ module.exports = async (sort) => {
     sort === "crypto" ? await Crypto.find() : await Portfolio.find();
 
   myArray.sort((a, b) => a.date - b.date);
-  if (sort !== "crypto") console.log(myArray);
 
   return myArray.length <= 7 ? myArray : myArray.slice(myArray.length - 7);
 };

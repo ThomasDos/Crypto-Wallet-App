@@ -9,7 +9,12 @@ import axios from "axios";
 import HomePage from "./pages/home/home.component";
 
 function App() {
-  const [dailyData, setDailyData] = useState();
+  const [dailyData, setDailyData] = useState({
+    BTC: 0,
+    ETH: 0,
+    XRP: 0,
+    date: "01-01-1970",
+  });
   useEffect(() => {
     axios("crypto/day")
       .then((result) => {
