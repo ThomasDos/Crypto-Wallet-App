@@ -4,10 +4,19 @@ import { Line } from "react-chartjs-2";
 import { ChartWeeklyContainer } from "./chart-weekly.styles";
 
 const ChartWeekly = () => {
-  const [dataCrypto, setDataCrypto] = useState();
+  const [dataCrypto, setDataCrypto] = useState([
+    {
+      BTC: 0,
+      ETH: 0,
+      XRP: 0,
+      dateString: "1970-01-01",
+    },
+  ]);
   useEffect(() => {
     axios("/crypto/week")
-      .then((result) => setDataCrypto(result.data))
+      .then((result) => {
+        setDataCrypto(result.data);
+      })
       .catch((err) => console.log(err.message));
   }, []);
 

@@ -8,8 +8,8 @@ const HomePage = (props) => {
   const initialData = [
     {
       coin: "BTC",
-      price: 30000,
-      quantity: 1,
+      price: 0,
+      quantity: 0,
       dateString: "1970-01-01",
     },
   ];
@@ -18,12 +18,14 @@ const HomePage = (props) => {
   useEffect(() => {
     axios("/wallet/last")
       .then((result) => {
+        console.log(result.data);
         setWalletLast(result.data);
       })
       .catch((err) => console.log(err));
 
     axios("/wallet")
       .then((result) => {
+        console.log(result.data);
         setWalletAll(result.data);
       })
       .catch((err) => console.log(err));

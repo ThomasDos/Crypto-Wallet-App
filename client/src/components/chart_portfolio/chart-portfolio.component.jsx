@@ -4,11 +4,19 @@ import { Line } from "react-chartjs-2";
 import { ChartPortfolioContainer } from "./chart-portfolio.styles";
 
 const ChartPortfolio = () => {
-  const [dataPortfolio, setDataPortfolio] = useState();
+  const [dataPortfolio, setDataPortfolio] = useState([
+    {
+      BTC: { quantity: 0, value: 0 },
+      ETH: { quantity: 0, value: 0 },
+      XRP: { quantity: 0, value: 0 },
+      dateString: "1970-01-01",
+    },
+  ]);
 
   useEffect(() => {
     axios("/portfolio/week")
       .then((result) => {
+        console.log(result.data, "CHART PORTFOLIO WEEK");
         setDataPortfolio(result.data);
       })
       .catch((err) => console.log(err.message));
