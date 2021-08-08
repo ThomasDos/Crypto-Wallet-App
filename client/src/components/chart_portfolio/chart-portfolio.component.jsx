@@ -16,7 +16,6 @@ const ChartPortfolio = () => {
   useEffect(() => {
     axios("/portfolio/week")
       .then((result) => {
-        console.log(result.data, "CHART PORTFOLIO WEEK");
         setDataPortfolio(result.data);
       })
       .catch((err) => console.log(err.message));

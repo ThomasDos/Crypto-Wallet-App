@@ -11,7 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 require("./router")(app);
 
 //Configs
-
 if (process.env.NODE_ENV === "production") {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join(__dirname, "../../client/build")));

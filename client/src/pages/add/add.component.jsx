@@ -6,7 +6,7 @@ import {
   DatasContainer,
   MainContainer,
   LogoContainerLink,
-  IconContainer,
+  // IconContainer,
   AddButton,
   InputContainer,
 } from "./add.styles";

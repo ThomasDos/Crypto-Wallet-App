@@ -24,14 +24,12 @@ const HomePage = (props) => {
   useEffect(() => {
     axios("/wallet/last")
       .then((result) => {
-        console.log(result.data);
         setWalletLast(result.data);
       })
       .catch((err) => console.log(err));
 
     axios("/wallet")
       .then((result) => {
-        console.log(result.data);
         setWalletAll(result.data);
       })
       .catch((err) => console.log(err));
