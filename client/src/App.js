@@ -16,7 +16,7 @@ function App() {
     date: "01-01-1970",
   });
   useEffect(() => {
-    axios("/crypto/day")
+    axios("/crypto/day", { headers: { Accept: "application/json" } })
       .then((result) => {
         console.log("RESULT WITHOUT DATA", result);
         console.log("my RESULT >>>", result.data);
