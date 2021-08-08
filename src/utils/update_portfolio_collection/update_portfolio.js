@@ -18,9 +18,9 @@ module.exports = async () => {
 
     const { BTC, ETH, XRP } = await lastDayCrypto();
 
-    dailyPortfolio.ETH.value = ETH * dailyPortfolio.ETH.quantity;
-    dailyPortfolio.BTC.value = BTC * dailyPortfolio.BTC.quantity;
-    dailyPortfolio.XRP.value = XRP * dailyPortfolio.XRP.quantity;
+    dailyPortfolio.ETH.value = ETH.value * dailyPortfolio.ETH.quantity;
+    dailyPortfolio.BTC.value = BTC.value * dailyPortfolio.BTC.quantity;
+    dailyPortfolio.XRP.value = XRP.value * dailyPortfolio.XRP.quantity;
 
     await new Portfolio(dailyPortfolio).save();
   } catch (error) {
