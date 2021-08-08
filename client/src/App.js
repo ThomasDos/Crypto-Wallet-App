@@ -18,6 +18,7 @@ function App() {
   useEffect(() => {
     axios("crypto/day")
       .then((result) => {
+        console.log("RESULT WITHOUT DATA", result);
         console.log("my RESULT >>>", result.data);
         let { BTC, ETH, XRP, dateString: date } = result.data;
         date = date.split("-").reverse().join("-");
