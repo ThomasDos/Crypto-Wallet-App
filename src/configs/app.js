@@ -7,6 +7,9 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//Router
+require("./router")(app);
+
 //Configs
 
 if (process.env.NODE_ENV === "production") {
@@ -17,9 +20,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../../client/build", "index.html"));
   });
 }
-
-//Router
-require("./router")(app);
 
 //DB
 require("../database/mongodb");

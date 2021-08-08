@@ -1,10 +1,10 @@
-const router = require("express").Router();
+const app = require("express")();
 const Crypto = require("../models/crypto.model");
 
 const lastWeekCrypto = require("../utils/last_week_data");
 const lastDayCrypto = require("../utils/last_day_data");
 
-router.route("/crypto").get(async (req, res) => {
+app.route("/crypto").get(async (req, res) => {
   try {
     const crypto = await Crypto.find();
     res.send(crypto);
@@ -13,7 +13,7 @@ router.route("/crypto").get(async (req, res) => {
   }
 });
 
-router.route("/crypto/week").get(async (req, res) => {
+app.route("/crypto/week").get(async (req, res) => {
   try {
     const cryptoWeek = await lastWeekCrypto("crypto");
     res.send(cryptoWeek);
@@ -22,7 +22,7 @@ router.route("/crypto/week").get(async (req, res) => {
   }
 });
 
-router.route("/crypto/day").get(async (req, res) => {
+app.route("/crypto/day").get(async (req, res) => {
   try {
     const cryptoDay = await lastDayCrypto("crypto");
     res.send(cryptoDay);
@@ -31,4 +31,4 @@ router.route("/crypto/day").get(async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = app;
