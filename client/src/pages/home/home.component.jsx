@@ -12,6 +12,12 @@ const HomePage = (props) => {
       quantity: 0,
       dateString: "1970-01-01",
     },
+    {
+      coin: "BTC",
+      price: 0,
+      quantity: 0,
+      dateString: "1970-01-01",
+    },
   ];
   const [walletLast, setWalletLast] = useState(initialData);
   const [walletAll, setWalletAll] = useState(initialData);
