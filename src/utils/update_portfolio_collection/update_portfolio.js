@@ -7,6 +7,7 @@ const newDate = require("../new_date");
 module.exports = async () => {
   try {
     const wallet = await Wallet.find();
+
     const dateString = newDate();
     const dailyPortfolio = {
       ETH: { quantity: findQuantity(wallet, "ETH") },
@@ -16,11 +17,11 @@ module.exports = async () => {
       date: new Date(dateString),
     };
 
-    const { BTC, ETH, XRP } = await lastDayCrypto();
+    const { BTC, ETH, XRP } = await lastDayCrypto("crypto");
 
-    dailyPortfolio.ETH.value = ETH.value * dailyPortfolio.ETH.quantity;
-    dailyPortfolio.BTC.value = BTC.value * dailyPortfolio.BTC.quantity;
-    dailyPortfolio.XRP.value = XRP.value * dailyPortfolio.XRP.quantity;
+    dailyPortfolio.ETH.value = ETH * dailyPortfolio.ETH.quantity;
+    dailyPortfolio.BTC.value = BTC * dailyPortfolio.BTC.quantity;
+    dailyPortfolio.XRP.value = XRP * dailyPortfolio.XRP.quantity;
 
     await new Portfolio(dailyPortfolio).save();
   } catch (error) {

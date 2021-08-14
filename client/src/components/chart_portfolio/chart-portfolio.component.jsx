@@ -23,6 +23,7 @@ const ChartPortfolio = () => {
 
   const myLabels = [];
   const prices = [];
+
   if (dataPortfolio) {
     for (let i in dataPortfolio) {
       myLabels[i] = dataPortfolio[i].dateString

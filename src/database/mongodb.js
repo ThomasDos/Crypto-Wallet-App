@@ -7,7 +7,7 @@ const urlDB =
     ? process.env.MONGODB_LOCAL
     : mongoDBAtlas;
 
-mongoose.connect(mongoDBAtlas, {
+mongoose.connect(urlDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
