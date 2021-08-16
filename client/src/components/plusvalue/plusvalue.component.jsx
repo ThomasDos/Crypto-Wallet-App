@@ -29,7 +29,7 @@ const PlusValue = ({ wallet, data }) => {
   return (
     <div>
       {money > 0 ? "+" : ""}
-      {money} €
+      {Math.round(money)} €
     </div>
   );
 };
